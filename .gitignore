@@ -1,0 +1,6 @@
+# Personal files: each person's own copy, never uploaded
+config.json
+opened.json
+log.txt
+__pycache__/
+.DS_Store
