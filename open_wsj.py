@@ -97,7 +97,7 @@ def find_edition_link(html: str):
 def latest_edition_email():
     """Return (message_id, link, email_date) for the newest matching email, or None."""
     since = (date.today() - timedelta(days=LOOKBACK_DAYS)).strftime("%d-%b-%Y")
-    with imaplib.IMAP4_SSL("imap.gmail.com") as imap:
+    with imaplib.IMAP4_SSL("imap.gmail.com", timeout=30) as imap:
         imap.login(gmail_user(), keychain_password())
         imap.select("INBOX", readonly=True)
         _, data = imap.search(None, "SINCE", since, "SUBJECT", f'"{SUBJECT_TEXT}"')
